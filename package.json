@@ -1,0 +1,22 @@
+{
+  "name": "wechat_study",
+  "version": "1.0.0",
+  "description": "> 创建小程序项目 ###### git init  ###### 添加.gitignore文件 切记:在第一次push代码前添加.gitignore文件,不然后续添加起来比较麻烦(后续也是可行的,但是commit记录) #### npm 安装",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doublechenfor/wechat_study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doublechenfor/wechat_study/issues"
+  },
+  "homepage": "https://github.com/doublechenfor/wechat_study#readme",
+  "dependencies": {
+    "events": "^3.0.0"
+  }
+}

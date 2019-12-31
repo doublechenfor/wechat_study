@@ -1,12 +1,14 @@
-# 云开发 quickstart
+### 小程序 笔记
+> 创建小程序项目
+###### git init 
+###### 添加.gitignore文件
+切记:在第一次push代码前添加.gitignore文件,不然后续添加起来比较麻烦(后续也是可行的,但是commit记录)
+#### npm 安装
 
-这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
-
-- 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
-- 文件存储：在小程序前端直接上传/下载云端文件，在云开发控制台可视化管理
-- 云函数：在云端运行的代码，微信私有协议天然鉴权，开发者只需编写业务逻辑代码
-
-## 参考文档
-
-- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+###### ===============
+###### 第一步:npm init
+###### 第二步:npm install
+###### 第三步:details->local settings->use npm modules
+###### 第四步:工具->构建npm
+##### 若是遇到bug.error:没有找到npm package,可能是没有执行npm init,初始化npm包
 
