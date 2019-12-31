@@ -7,10 +7,31 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    array : []
   },
 
   onLoad: function() {
+    // 基本数据类型
+    // let a=null,b=undefined,c='',d=[],e={},f=[{}],g
+    // console.log(a,b,c,d,e,f==undefined,g)
+    // console.log()
+    // console.log(typeof (a), typeof (b), typeof (c), typeof (d), typeof (e), typeof (f), typeof (g))
+    // 给数组赋值
+    let caseOne = [
+    { a: 'hello', b: 'world', c: 1024, d: {} }, 
+    { a: 'hello', b: 'world', c: 1024, d: {} }, 
+    { a: 'hello', b: 'world', c: 1024, d: {} }
+    ]
+    caseOne.map(item=>{
+      this.data.array.push(item)
+    })   
+    this.setData({
+      array:this.data.array
+    })
+    console.log(this.data.array,this.data.array.length)
+
+
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',

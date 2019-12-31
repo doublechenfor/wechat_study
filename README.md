@@ -17,4 +17,46 @@
 ##### 3. 是否勾选了设置中的使用使用npm模块
 ###### 至此 npm包安装成功,后续就可以使用
 
+> 关于数组赋值
+###### ![avatar](./miniprogram/images/1assign_value.png) 
+###### 在使用setData({})进行赋值时,官方的样例是:
+```
+this.setData({
+  'array[0].text':'change data'
+})
+```
+###### 在利用setData({})进行赋值时,只能赋值一个静态值,于是上图的赋值可以改为下图:
+###### ![avatar](./miniprogram/images/assign_value_1.png) 
+###### 向数组中添加元素时,由于push方法是将新数组作为一个元素加入在数组中,而concat将新数组每个元素分别加入到数组中,于是可以通过concat解决数组的添加 
+```
+    // 给数组赋值
+    let caseOne = [
+    { a: 'hello', b: 'world', c: 1024, d: {} }, 
+    { a: 'hello', b: 'world', c: 1024, d: {} }, 
+    { a: 'hello', b: 'world', c: 1024, d: {} }
+    ]
+    this.setData({
+      array:this.data.array.concat(caseOne)
+    })
+    console.log(this.data.array,this.data.array.length)
+```
+###### 或者:
+```
+    // 给数组赋值
+    let caseOne = [
+    { a: 'hello', b: 'world', c: 1024, d: {} }, 
+    { a: 'hello', b: 'world', c: 1024, d: {} }, 
+    { a: 'hello', b: 'world', c: 1024, d: {} }
+    ]
+    caseOne.map(item=>{
+      this.data.array.push(item)
+    })   
+    this.setData({
+      array:this.data.array
+    })
+    console.log(this.data.array,this.data.array.length)
+```
+###### 只要最后赋给setData({})时,是一个静态值就ok~~
+###### ![avatar](./miniprogram/images/assign_value_2.png)
+
 
