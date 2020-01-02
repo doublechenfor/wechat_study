@@ -60,3 +60,59 @@ this.setData({
 ###### ![avatar](./miniprogram/images/assign_value_2.png)
 
 
+> watch监听器,监听父组件传递的值的变化
+###### 若多个页面需要用到watch监听,则在app.js中写入监听器
+```
+onLaunch: function () {},
+// 设置监听器
+watch: function (ctx, obj) {
+  Object.keys(obj).forEach(key => {
+    this.observer(ctx.data, key, ctx.data[key], function (value) {
+      obj[key].call(ctx, value)
+    })
+  })
+},
+// 监听属性，并执行监听函数
+observer: function (data, key, val, fn) {
+  Object.defineProperty(data, key, {
+    configurable: true,
+    enumerable: true,
+    get: function () {
+      return val
+    },
+    set: function (newVal) {
+      if (newVal === val) return
+      fn && fn(newVal)
+      val = newVal
+    },
+  })
+}
+```
+###### 在子组件中使用时,写入:
+```
+const app = getApp()
+Page({
+  data: {
+    test: 0
+  },
+  onLoad: function () {
+    // 调用监听器，监听数据变化
+    app.watch(this, {
+      test: function (newVal) {
+        console.log(newVal)
+      }
+    })
+  }
+```
+> 关于对象为空的判断
+###### 1.使用JSON.stringify方法,将javascript的值转换成json字符串
+```
+ console.log(JSON.stringify(e)==='{}')
+```
+ps:toString()方法也是将数据转化为字符串,这里使用toString不能判断,对于空对象,toString()返回的是它的类型表示符"[object Object]"
+###### ![avatar](./miniprogram/images/assign_value_3.png)
+###### 2.ES6的新方法 Object.keys()方法(该方法会返回一个由一个给定对象的自身可枚举属性组成的数组)
+```
+console.log(Object.keys(j).length===0)
+```
+###### 3.

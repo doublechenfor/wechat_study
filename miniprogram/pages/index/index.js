@@ -10,26 +10,32 @@ Page({
     requestResult: '',
     array : []
   },
-
   onLoad: function() {
-    // 基本数据类型
-    // let a=null,b=undefined,c='',d=[],e={},f=[{}],g
-    // console.log(a,b,c,d,e,f==undefined,g)
-    // console.log()
-    // console.log(typeof (a), typeof (b), typeof (c), typeof (d), typeof (e), typeof (f), typeof (g))
+    //基本数据类型
+    let a=null,b=undefined,c='',d=[],e={p:'hello'},f=[{x:'hello',y:false,z:123}],g,h=[{}],k=function(){
+      return 
+    },j={}
+    console.log(a,b,c,d,e,f,g)
+    console.log(typeof (a), typeof (b), typeof (c), typeof (d), typeof (e), typeof (f), typeof (g))
+    // 判断一个对象是否为空
+    console.log(Object.keys(j).length===0)
     // 给数组赋值
-    let caseOne = [
-    { a: 'hello', b: 'world', c: 1024, d: {} }, 
-    { a: 'hello', b: 'world', c: 1024, d: {} }, 
-    { a: 'hello', b: 'world', c: 1024, d: {} }
-    ]
-    caseOne.map(item=>{
-      this.data.array.push(item)
-    })   
-    this.setData({
-      array:this.data.array
-    })
-    console.log(this.data.array,this.data.array.length)
+    // let caseOne = [
+    // { a: 'hello', b: 'world', c: 1024, d: {} }, 
+    // { a: 'hello', b: 'world', c: 1024, d: {} }, 
+    // { a: 'hello', b: 'world', c: 1024, d: {} }
+    // ]
+    // caseOne.map(item=>{
+    //   this.data.array.push(item)
+    // })   
+    // this.setData({
+    //   array:this.data.array
+    // })
+    // let x="array[1].c"
+    // this.setData({
+    //   [x]:false
+    // })
+    // console.log(this.data.array,this.data.array.length)
 
 
     if (!wx.cloud) {
@@ -56,7 +62,12 @@ Page({
       }
     })
   },
-
+   a(e){
+    for(var i in e){
+  return true
+}
+return false
+},
   onGetUserInfo: function(e) {
     if (!this.data.logged && e.detail.userInfo) {
       this.setData({
