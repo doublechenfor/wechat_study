@@ -161,3 +161,42 @@ if(test.match(/^\s*$/)){
     console.log("all space or \\n or empty") //换行或者什么都没有
 }
 ```
+> 在实际项目开发中,学会各种css选择器助于提高开发效率和优化代码,减少不必要的类名和id名定义,提高代码可读性
+###### 常用基础选择器有:元素选择器、类选择器、id选择器、选择器分组、后代选择器
+###### 还有属性选择器([title/*])、子元素选择器(>)、相邻兄弟选择器(有同一个父元素,+)、伪类、伪元素
+###### 1.伪类:  
+###### :hover、:link、:visited、:active、<strong>:first-child</strong>、:lang
+###### 讲解分析:first-child,经常有人错误地认为p:first-child之类地选择器会选择p元素地第一个子元素,了解如下:
+```
+p:first-child {font-weight: bold;}
+li:first-child {text-transform:uppercase;}
+#### 第一个规则将作为某元素第一个子元素的所有 p 元素设置为粗体。第二个规则将作为某个元素（在 HTML 中，这肯定是 ol 或 ul 元素）第一个子元素的所有 li 元素变成大写。
+```
+某个元素(相对的,相对于该选择器所处的位置)的第一个子元素,若`p:first-child {font-weight: bold;}`直接写在css文件的最外,则在为body中的第一个子元素为p的元素
+###### 伪元素:常用:before、:after,聊天气泡即可用该伪元素实现,还有:first-letter(文本的第一个字母)、:first-line(文本的第一行)
+> 微信小程序父子传值问题
+###### 在实际项目开发中,遇到一个问题:在父组件中new了一个signal实例,该对象extends events,将其传递给子组件时,子组件得到的signal对象不完整,通过signal类构造器初始化的属性存在且正确,但是子组件中拿到的signal实例的_proto_直接为Object,而父组件new出来的signal实例的_proto_为events实例,表明子组件获取到的signal对象并没有继承到events,且在signal类中new的其他实例及其继承的类及方法也不存在
+###### 推测:在new一个实例时,编译器会直接加载执行new实例时所遇到的文件,但是将其传递给子组件时,只传递最外面的一层,并没有深度传递整个实例
+###### 解决办法:将new signal实例拉出来单独放在一个文件夹中,并将该实例暴露出来,在父组件和子组件中分别import使用
+
+> wx小程序的缓存setStorageSync和getStorageSync
+###### 默认情况下 微信小程序的缓存时永久的,除非用户主动清空微信小程序的缓存数据,但是在实际项目中,永久保存数据是不切实际的,故可以自动写一个缓存时间的设置,考虑是:若在登录时需要校验storage数据,则可存储一个未来时间的时间戳(当时时间数+据存储保留的时间)在storage中,每次登录时,取出storage中的时间戳和当前时间的时间戳进行比较,若当前时间大于storage中存储的时间,则清空storage中的存储数据,否则可以直接使用storage中存储的数据
+```
+Date.parse(new Date()) 
+### 获取当前时间的时间戳
+
+#### 以下用于小程序中storage缓存保留时间的实例
+var timestamp = Date.parse(new Date()); // 当前时间的时间超
+var expiration = timestamp + 60*1000*30; //缓存30分钟
+var data_expiration = wx.getStorageSync(“data_expiration”);
+if (data_expiration) {
+if (timestamp > data_expiration) { 若当前时间的时间戳超过了storage中缓存保留的时间
+wx.clearStorageSync()             则清空storage中缓存的数据
+wx.setStorageSync(“data_expiration”, expiration)  // 重新设置新的保留截止时间的时间戳
+}
+} else {
+// wx.setStorageSync(“data_expiration”, expiration)
+}
+```
+
+

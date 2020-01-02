@@ -38,21 +38,20 @@ Page({
     // console.log(this.data.array,this.data.array.length)
     // 字符串匹配
     // 1.match
-    var test = ` 
-      `
-    //var test = "      ";
-    if (test.match(/^\s+$/)) {
-      console.log("all space or \\n")
-    }
-    if (test.match(/^[ ]+$/)) {
-      console.log("all space")
-    }
-    if (test.match(/^[ ]*$/)) {
-      console.log("all space or empty")
-    }
-    if (test.match(/^\s*$/)) {
-      console.log("all space or \\n or empty")
-    }
+    // var test = "   \n   ";
+    // //var test = "      ";
+    // if (test.match(/^\s+$/)) {
+    //   console.log("all space or \\n")
+    // }
+    // if (test.match(/^[ ]+$/)) {
+    //   console.log("all space")
+    // }
+    // if (test.match(/^[ ]*$/)) {
+    //   console.log("all space or empty")
+    // }
+    // if (test.match(/^\s*$/)) {
+    //   console.log("all space or \\n or empty")
+    // }
 
 
     if (!wx.cloud) {
