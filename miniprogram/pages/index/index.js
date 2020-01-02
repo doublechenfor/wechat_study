@@ -15,10 +15,10 @@ Page({
     let a=null,b=undefined,c='',d=[],e={p:'hello'},f=[{x:'hello',y:false,z:123}],g,h=[{}],k=function(){
       return 
     },j={}
-    console.log(a,b,c,d,e,f,g)
-    console.log(typeof (a), typeof (b), typeof (c), typeof (d), typeof (e), typeof (f), typeof (g))
+    // console.log(a,b,c,d,e,f,g)
+    // console.log(typeof (a), typeof (b), typeof (c), typeof (d), typeof (e), typeof (f), typeof (g))
     // 判断一个对象是否为空
-    console.log(Object.keys(j).length===0)
+    // console.log(Object.keys(j).length===0)
     // 给数组赋值
     // let caseOne = [
     // { a: 'hello', b: 'world', c: 1024, d: {} }, 
@@ -36,6 +36,23 @@ Page({
     //   [x]:false
     // })
     // console.log(this.data.array,this.data.array.length)
+    // 字符串匹配
+    // 1.match
+    var test = ` 
+      `
+    //var test = "      ";
+    if (test.match(/^\s+$/)) {
+      console.log("all space or \\n")
+    }
+    if (test.match(/^[ ]+$/)) {
+      console.log("all space")
+    }
+    if (test.match(/^[ ]*$/)) {
+      console.log("all space or empty")
+    }
+    if (test.match(/^\s*$/)) {
+      console.log("all space or \\n or empty")
+    }
 
 
     if (!wx.cloud) {

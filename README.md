@@ -115,4 +115,49 @@ ps:toString()方法也是将数据转化为字符串,这里使用toString不能�
 ```
 console.log(Object.keys(j).length===0)
 ```
-###### 3.
+>微信小程序中父子组件之间传值问题
+###### 1.父组件向子组件传值
+```
+<my-component name="{{name}}" age="{{age}}"></my-component>
+```
+###### 上例中,父组件在引用子组件时,向其传入name和age值,在子组件中properties里接收该值,通过this.properties.name获取  
+在实际项目开发时,可同时搭配watch值,监听该传递值的变化,同时,传递的值发生变化时,子组件会重新渲染,实现数据的绑定
+###### 2.子组件向父组件传值
+```
+parent wxml中
+<my-component name="{{name}}" age="{{age}}" bind:bindchangeName="changeName"></my-component>
+parent js中
+changeName(event) {
+  console.log(event.detail)
+
+  // { name: '李四' }
+}
+```
+###### 上例中,在父组件wxml和js中分别添加上述代码,js中的`event`即为传递给父组件的数据
+> wx中hidden和wx:if的选择和区别
+###### 在进行条件选择渲染时,`使用hidden,在初始渲染时,各模块和组件均会渲染,初始渲染较慢较重,但是在切换时,各组件模块不会销毁  
+和重新渲染`;`在使用wx:if时,初始时为局部渲染,减少了初始渲染的消耗,在初始渲染时,速度快且较轻便,但是每次条件更变切换时,组件都会销毁和重新渲染,故条件切换时,渲染速度较慢`
+###### 所以在使用时,根据需求改变使用,若较频繁切换条件选择,则使用hidden若条件切换情况较少,则可使用wx:if
+###### ps:hidden只对块级元素有用
+> 字符串为空格或者空的判断
+###### 1.match方法,match(RegExp)参数必须为要匹配字符串的正则表达式对象,若该参数不是正则表达式对象,则先将其传递给RegExp
+构造函数,将其转化为正则表达式的对象:
+```
+var re = new RegExp("ab+c");  // RegExp 构造函数创建了一个正则表达式对象，用于将文本与一个模式匹配,返回该文本的正则表达式模式
+```
+```
+var test = "   \n   ";
+//var test = "      ";
+if(test.match(/^\s+$/)){
+    console.log("all space or \\n")  // 空格 or 换行
+}
+if(test.match(/^[ ]+$/)){
+    console.log("all space")  // 全部是空格
+}
+if(test.match(/^[ ]*$/)){
+    console.log("all space or empty") //空格或者是什么都没有
+}
+if(test.match(/^\s*$/)){
+    console.log("all space or \\n or empty") //换行或者什么都没有
+}
+```
