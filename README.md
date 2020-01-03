@@ -198,5 +198,7 @@ wx.setStorageSync(“data_expiration”, expiration)  // 重新设置新的保�
 // wx.setStorageSync(“data_expiration”, expiration)
 }
 ```
+> 界面交互时,使用wx提供的api,例如wx.showModel、wx.showToast等
+> 在实际项目开发时,需要设置滚动条高度,首先在子组件的data中声明变量`scrollTop=0`,然后在ready()中`this.setData({scrollTop:500})`,但是实际wxml并没有任何改变,仍为0,或者为500,但是实际滚动条依然为0,检查了好多次,不知道是什么原因造成的.后来我又在`setTimeout({this.setData({scrollTop:500}},1000)`中设置滚动条高度,至此,wxml中滚动条显示正常了,所以在设置滚动条高度时,第一次的赋值不奏效时,可以延迟几秒再重新赋值第二次
 
 

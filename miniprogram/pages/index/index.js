@@ -52,7 +52,22 @@ Page({
     // if (test.match(/^\s*$/)) {
     //   console.log("all space or \\n or empty")
     // }
-
+    // wx小程序的交互提示框
+    // wx.showToast({
+    //   title: '成功',
+    //   icon: 'success',
+    //   duration: 2000
+    // })
+    // wx.showActionSheet({
+    //   itemList: ['A', 'B', 'C'],
+    //   success(res) {
+    //     console.log(res.tapIndex)
+    //   },
+    //   fail(res) {
+    //     console.log(res.errMsg)
+    //   }
+    // })
+ 
 
     if (!wx.cloud) {
       wx.redirectTo({
