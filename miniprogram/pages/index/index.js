@@ -12,7 +12,7 @@ Page({
   },
   onLoad: function() {
     //基本数据类型
-    let a=null,b=undefined,c='',d=[],e={p:'hello'},f=[{x:'hello',y:false,z:123}],g,h=[{}],k=function(){
+    let a = null, b = undefined, c = '', d = [], e = { p: 'hello' }, f = [{ x: 'hello', y: false, z: 123 }, { x: 'hello', y: false, z: 123}],g,h=[{}],k=function(){
       return 
     },j={}
     // console.log(a,b,c,d,e,f,g)
@@ -67,7 +67,17 @@ Page({
     //     console.log(res.errMsg)
     //   }
     // })
- 
+    // == 和=== 的判断
+    // a=false
+    // console.log('a==""',a=='','a===""',a==='','a!==null')
+    // 关于数组为空的判断
+    // let main=[]
+    // console.log('dasdasdas', JSON.stringify(main)=='[]')
+    // console.log('h length',JSON.stringify(d),d.length,Array.isArray(d),Object.prototype.toString.call(d))
+    //1.  array.length>0
+    //2. JSON.stringify(array)==='[]'
+    //3. ES5的方法 先判断该变量是否为数组+再判断该数组是否为空:Array.isArray(array) && array.length===0
+    //4. 若ES5的方法不支持,可以使用Object.prototype.tostring.call(array)==='[object Array]' && array.length===0
 
     if (!wx.cloud) {
       wx.redirectTo({

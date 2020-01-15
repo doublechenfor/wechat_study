@@ -115,6 +115,13 @@ ps:toString()方法也是将数据转化为字符串,这里使用toString不能�
 ```
 console.log(Object.keys(j).length===0)
 ```
+> 关于数组为空的判断
+#### js中在进行比较时,如果比较的两者中有bool，会把 bool 先转换为对应的 number，即 0 和 1、如果比较的双方中有一方为number一方为string，会把string转换为数字
+###### 1.array.length===0 // 该方法存在问题,若array为空字符串时,该判断也会返回true
+###### 2.JSON.stringify(array)==='[]' //
+###### 3.A && A.constructor==Array && A.length==0 || es5中:Array.isArray(array) && array.length===0// 若不为Array类型,则没有length属性,先判断是否为Array类型,再判断数组长度
+###### 4.若ES5的方法不支持,可以使用Object.prototype.tostring.call(array)==='[object Array]' && array.length===0
+##### 
 >微信小程序中父子组件之间传值问题
 ###### 1.父组件向子组件传值
 ```
@@ -200,5 +207,14 @@ wx.setStorageSync(“data_expiration”, expiration)  // 重新设置新的保�
 ```
 > 界面交互时,使用wx提供的api,例如wx.showModel、wx.showToast等
 > 在实际项目开发时,需要设置滚动条高度,首先在子组件的data中声明变量`scrollTop=0`,然后在ready()中`this.setData({scrollTop:500})`,但是实际wxml并没有任何改变,仍为0,或者为500,但是实际滚动条依然为0,检查了好多次,不知道是什么原因造成的.后来我又在`setTimeout({this.setData({scrollTop:500}},1000)`中设置滚动条高度,至此,wxml中滚动条显示正常了,所以在设置滚动条高度时,第一次的赋值不奏效时,可以延迟几秒再重新赋值第二次
+
+> 关于小程序image的问题
+#### 微信开发者工具中image使用相对路径是有效的,但用真机测试时,image不显示
+###### 1.在开发时,对于image的src地址,尽量使用绝对地址,不是用相对地址
+###### 2.将若图片的线上图片,记得将域名加入小程序允许访问域名的列表中,在请求时,将图片http地址改为https
+###### 3.图片路径不能带中文,容易出问题
+
+> 关于判断
+###### 有时候判断数据为空时,会`if(a!=null && a!=''...)`这样写时,当a为false时,就与a==''就为true,所以用`a===""`进行判断
 
 
