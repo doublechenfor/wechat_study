@@ -117,11 +117,11 @@ console.log(Object.keys(j).length===0)
 ```
 > 关于数组为空的判断
 #### js中在进行比较时,如果比较的两者中有bool，会把 bool 先转换为对应的 number，即 0 和 1、如果比较的双方中有一方为number一方为string，会把string转换为数字
-###### 1.array.length===0 // 该方法存在问题,若array为空字符串时,该判断也会返回true
-###### 2.JSON.stringify(array)==='[]' //
-###### 3.A && A.constructor==Array && A.length==0 || es5中:Array.isArray(array) && array.length===0// 若不为Array类型,则没有length属性,先判断是否为Array类型,再判断数组长度
-###### 4.若ES5的方法不支持,可以使用Object.prototype.tostring.call(array)==='[object Array]' && array.length===0
-##### 
+###### 1.`array.length===0 `// 该方法存在问题,若array为空字符串时,该判断也会返回true
+###### 2.`JSON.stringify(array)==='[]' `//
+###### 3.`A && A.constructor==Array && A.length==0 || es5中:Array.isArray(array) && array.length===0`// 若不为Array类型,则没有length属性,先判断是否为Array类型,再判断数组长度
+###### 4.若ES5的方法不支持,可以使用`Object.prototype.tostring.call(array)==='[object Array]' && array.length===0`
+
 >微信小程序中父子组件之间传值问题
 ###### 1.父组件向子组件传值
 ```
